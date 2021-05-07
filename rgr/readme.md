@@ -141,7 +141,7 @@ darbin_watson = lambda e: {'value' : round(sum([(e[i] - e[i-1])**2 for i in rang
 
 Абсолютно аналогично поступаем с критерием Стьюдента. Формула:
 
-<img src="https://render.githubusercontent.com/render/math?math=t_{эмпир} = \frac{|\overline{e}-0|\sqrt{n}}{S_e}">
+<img src="https://render.githubusercontent.com/render/math?math=t_{ampyr} = \frac{|\overline{e}-0|\sqrt{n}}{S_e}">
 
 ```python
 rs_crit = lambda e: round((max(e)-min(e))/np.std(e, ddof = 1),2)
