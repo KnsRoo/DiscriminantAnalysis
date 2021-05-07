@@ -135,10 +135,13 @@ darbin_watson = lambda e: {'value' : round(sum([(e[i] - e[i-1])**2 for i in rang
 
 А S от e это обычное стандартное отклонение (формула ниже), с количеством степеней свободы (n-1). Воспользуемся функцией **std** библиоетки NumPy. Она считает стандартное отклонение. Аргумент *ddof* - дельта количества степеней свободы. По умолчанию 0, значит в знаменателе подкоренного выражения
 
-<img src="https://render.githubusercontent.com/render/math?math=S_e = \sqrt{\frac{\sum_{i=1}^{n} (e_i-\overline{e})^2}{n-1}">
+<img src="https://render.githubusercontent.com/render/math?math=S_e = \sqrt{\frac{\sum_{i=1}^{n}(e_i-\overline{e})^2}{n-1}">
 
 будет n, а нам нужно n-1, поэтмоу ddof присвоим 1. Округлим вывод при помощи **round**
 
+Абсолютно аналогично поступаем с критерием Стьюдента.
+
 ```python
 rs_crit = lambda e: round((max(e)-min(e))/np.std(e, ddof = 1),2)
+student = lambda e: {'value' : round(abs(np.mean(e)-0)*np.sqrt(len(e))/(np.std(e, ddof = 1)),3), 'df' : len(e)-1}
 ```
